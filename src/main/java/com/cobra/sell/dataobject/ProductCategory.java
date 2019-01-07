@@ -36,13 +36,6 @@ public class ProductCategory {
      */
     private Integer categoryType;
 
-    /** 信息创建时间 */
-    //private Date create_time;
-
-    /**
-     * 信息修改时间
-     */
-    //private Date update_time;
     public ProductCategory() {
     }
 
