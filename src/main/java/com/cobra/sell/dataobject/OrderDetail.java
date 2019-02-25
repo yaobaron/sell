@@ -1,12 +1,19 @@
 package com.cobra.sell.dataobject;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @Author: Baron
  * @Description:
  * @Date: Created in 2019/1/7 12:49
  */
+@Entity
+@Data
 public class OrderDetail {
 
     @Id
@@ -26,14 +33,24 @@ public class OrderDetail {
     /**
      * 商品价格
      */
-    private String productPrice;
+    private BigDecimal productPrice;
     /**
      * 商品数量
      */
-    private String productQuantity;
+    private Integer productQuantity;
     /**
      * 商品小图
      */
     private String productIcon;
+
+    /**
+     * 创建时间(方便排序)
+     */
+    //private Date createTime;
+
+    /**
+     * 更新时间(方便排序)
+     */
+    //private Date updateTime;
 
 }

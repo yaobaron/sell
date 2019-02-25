@@ -3,6 +3,7 @@ package com.cobra.sell.vo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -11,7 +12,12 @@ import java.math.BigDecimal;
  * @Date: Created in 2019/1/7 11:09
  */
 @Data
-public class ProductInfoVO {
+public class ProductInfoVO implements Serializable {
+    /**
+     *  implements Serializable 快捷键添加shif+ctrl+s
+     */
+    private static final long serialVersionUID = -259670499210797950L;
+
     @JsonProperty("id")
     private String productId;
 

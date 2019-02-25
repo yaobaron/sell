@@ -1,7 +1,6 @@
 package com.cobra.sell.service.impl;
 
 import com.cobra.sell.dataobject.ProductCategory;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author: Baron
@@ -24,7 +21,7 @@ import static org.junit.Assert.*;
 public class ProductCatetoryServiceImplTest {
 
     @Autowired
-    ProductCatetoryServiceImpl productCatetoryService;
+    ProductCategoryServiceImpl productCatetoryService;
 
     @Test
     public void findOne() {

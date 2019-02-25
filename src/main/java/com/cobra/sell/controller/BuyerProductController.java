@@ -2,19 +2,21 @@ package com.cobra.sell.controller;
 
 import com.cobra.sell.dataobject.ProductCategory;
 import com.cobra.sell.dataobject.ProductInfo;
-import com.cobra.sell.service.ProductCatetoryService;
+import com.cobra.sell.service.ProductCategoryService;
 import com.cobra.sell.service.ProductInfoService;
+import com.cobra.sell.utils.ResultVOUtil;
 import com.cobra.sell.vo.ProductInfoVO;
 import com.cobra.sell.vo.ProductVO;
 import com.cobra.sell.vo.ResultVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,10 +33,14 @@ public class BuyerProductController {
     private ProductInfoService productInfoService;
 
     @Autowired
-    private ProductCatetoryService productCatetoryService;
+    private ProductCategoryService productCategoryService;
 
     @GetMapping("/list")
-    public ResultVO list() {
+    @Cacheable(cacheNames = "product",key = "#sellerId",
+            condition = "#sellerId.length()>3", unless = "result.code!=0")//动态key，spel表达式，condition成立才会对结果进行缓存，unless如果不的意思,只有为0的时候，即返回正确结果才进行缓存
+    //@Cacheable(cacheNames = "product",key = "123")//查询把结果缓存
+    public ResultVO list(@RequestParam("sellerId") String sellerId) {
+    //public ResultVO list() {
         //1.查询所有上架商品
         List<ProductInfo> productInfolist = productInfoService.findUpAll();
         //2.查询类目（一次性查询）
@@ -49,7 +55,7 @@ public class BuyerProductController {
                 .map(e -> e.getCategoryType())
                 .collect(Collectors.toList());
         System.out.println(categoryTypeList.toString());
-        List<ProductCategory> productCategoryList = productCatetoryService.findByCategoryTypeIn(categoryTypeList);
+        List<ProductCategory> productCategoryList = productCategoryService.findByCategoryTypeIn(categoryTypeList);
         //3.数据拼装
         List<ProductVO> productVOList = new ArrayList<ProductVO>();
         for (ProductCategory productCategory: productCategoryList) {
@@ -67,11 +73,7 @@ public class BuyerProductController {
             productVO.setProductInfoVOlist(productInfoVOList);
             productVOList.add(productVO);
         }
-        ResultVO resultVO = new ResultVO();
-        resultVO.setData(productVOList);
-        resultVO.setCode(0);
-        resultVO.setMsg("成功");
-        return resultVO;
+        return ResultVOUtil.success(productVOList);
     }
 
 }

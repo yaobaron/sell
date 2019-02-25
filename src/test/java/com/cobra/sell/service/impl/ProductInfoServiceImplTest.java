@@ -61,4 +61,16 @@ public class ProductInfoServiceImplTest {
         ProductInfo result = productInfoService.save(productInfo);
         Assert.assertEquals(new Integer(120),result.getProductStock());
     }
+
+    @Test
+    public void onSaleTest() {
+        ProductInfo productInfo = productInfoService.onSale("123123");
+        Assert.assertEquals(new Integer(0),productInfo.getProductStatus());
+    }
+
+    @Test
+    public void offSaleTest() {
+        ProductInfo productInfo = productInfoService.offSale("123123");
+        Assert.assertEquals(new Integer(1),productInfo.getProductStatus());
+    }
 }

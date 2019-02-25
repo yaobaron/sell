@@ -1,11 +1,16 @@
 package com.cobra.sell.dataobject;
 
+import com.cobra.sell.enums.OrderStausEnum;
+import com.cobra.sell.enums.PayStausEnum;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: Baron
@@ -42,10 +47,25 @@ public class OrderMaster {
     /**
      * 订单状态，默认0新下单
      */
-    private Integer orderStatus;
+    private Integer orderStatus=OrderStausEnum.NEW.getCode();
     /**
      * 支付状态，默认0未支付
      */
-    private Integer payStatus;
+    private Integer payStatus=PayStausEnum.WAIT.getCode();
+
+    /**
+     * 创建时间(方便排序)
+     */
+    private Date createTime;
+
+    /**
+     * 更新时间(方便排序)
+     */
+    private Date updateTime;
+
+    /*
+    @Transient
+    private List<OrderDetail> orderDetailList;
+    */
 
 }

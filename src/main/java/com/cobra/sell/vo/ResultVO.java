@@ -1,6 +1,10 @@
 package com.cobra.sell.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import lombok.Getter;
+
+import java.io.Serializable;
 
 /**
  * @Author: Baron
@@ -8,7 +12,11 @@ import lombok.Data;
  * @Date: Created in 2019/1/7 10:54
  */
 @Data
-public class ResultVO<T> {
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ResultVO<T> implements Serializable {
+
+    private static final long serialVersionUID = -9008051287947584245L;
+
     /**
      * 返回信息码，错误码
      */

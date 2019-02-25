@@ -1,6 +1,7 @@
 package com.cobra.sell.service;
 
 import com.cobra.sell.dataobject.ProductInfo;
+import com.cobra.sell.dto.CartDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,29 @@ public interface ProductInfoService {
      */
     ProductInfo save(ProductInfo productInfo);
 
-    //增加库存
+    /**
+     * 增加库存
+     * @param cartDTOList
+     */
+    void increaseStock(List<CartDTO> cartDTOList);
 
-    //减少库存
+    /**
+     * 减少库存
+     * @param cartDTOList
+     */
+    void decreaseStock(List<CartDTO> cartDTOList);
+
+    /**
+     * 商品上架
+     * @param productId
+     * @return
+     */
+    ProductInfo onSale(String productId);
+
+    /**
+     * 商品下架
+     * @param productId
+     * @return
+     */
+    ProductInfo offSale(String productId);
 }

@@ -1,6 +1,7 @@
 package com.cobra.sell.service;
 
 import com.cobra.sell.dataobject.ProductCategory;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @Description:
  * @Date: Created in 2019/1/7 0:58
  */
-public interface ProductCatetoryService {
+public interface ProductCategoryService {
     /**
      *  通过类目id查找类目
      * @param categoryId

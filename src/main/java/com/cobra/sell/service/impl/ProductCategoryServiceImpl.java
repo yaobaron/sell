@@ -2,7 +2,7 @@ package com.cobra.sell.service.impl;
 
 import com.cobra.sell.dataobject.ProductCategory;
 import com.cobra.sell.repository.ProductCategoryRepository;
-import com.cobra.sell.service.ProductCatetoryService;
+import com.cobra.sell.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * @Date: Created in 2019/1/7 1:10
  */
 @Service
-public class ProductCatetoryServiceImpl implements ProductCatetoryService {
+public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Autowired
     private ProductCategoryRepository productCategoryRepository;

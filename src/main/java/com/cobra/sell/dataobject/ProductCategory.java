@@ -6,6 +6,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * @Author: Baron
@@ -35,6 +36,16 @@ public class ProductCategory {
      * 类目编码.
      */
     private Integer categoryType;
+
+    /**
+     * 创建时间(方便排序)
+     */
+    private Date createTime;
+
+    /**
+     * 更新时间(方便排序)
+     */
+    private Date updateTime;
 
     public ProductCategory() {
     }
