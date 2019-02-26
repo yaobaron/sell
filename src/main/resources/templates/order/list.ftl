@@ -97,7 +97,7 @@
         <audio id="notice" loop="loop">
             <source src="/sell/mp3/song.mp3">
         </audio>
-        <#--websocket通信前端部分-->
+        <#--websocket通信前端部分,测试的时候注释掉，或者地址改为本地地址-->
         <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
         <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <#--

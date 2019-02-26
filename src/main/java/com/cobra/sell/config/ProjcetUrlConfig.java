@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 项目需要的路径配置
  * @Date: Created in 2019/1/17 1:25
  */
 @Data

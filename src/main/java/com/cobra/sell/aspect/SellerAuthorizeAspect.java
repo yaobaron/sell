@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 登录校验
  * @Date: Created in 2019/1/17 4:12
  */
 @Aspect
@@ -34,14 +34,14 @@ public class SellerAuthorizeAspect {
     private StringRedisTemplate redisTemplate;
 
     @Pointcut("execution(public * com.cobra.sell.controller.Seller*.*(..))" +
-    "&& !execution(public * com.cobra.sell.controller.SellerUserController.*(..))")
-    public void verify(){
+            "&& !execution(public * com.cobra.sell.controller.SellerUserController.*(..))")
+    public void verify() {
 
     }
 
     @Before("verify()")
-    public void doVerify(){
-//
+    public void doVerify() {
+        /* 测试时开发时可以注释，上线时放开实现登录校验 */
 //        ServletRequestAttributes attributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
 //        HttpServletRequest request = attributes.getRequest();
 //        HttpServletResponse response = attributes.getResponse();

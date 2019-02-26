@@ -4,11 +4,11 @@ import lombok.Getter;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 支付状态
  * @Date: Created in 2019/1/9 12:56
  */
 @Getter
-public enum PayStausEnum implements CodeEnum{
+public enum PayStausEnum implements CodeEnum {
     WAIT(0, "等待支付"),
     SUCCESS(1, "支付成功");
 

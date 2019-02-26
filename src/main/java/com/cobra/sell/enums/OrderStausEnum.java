@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 订单状态
  * @Date: Created in 2019/1/9 12:47
  */
 @Getter

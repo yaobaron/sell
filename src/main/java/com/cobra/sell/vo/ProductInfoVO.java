@@ -13,23 +13,39 @@ import java.math.BigDecimal;
  */
 @Data
 public class ProductInfoVO implements Serializable {
+
     /**
-     *  implements Serializable 快捷键添加shif+ctrl+s
+     * implements Serializable 快捷键添加shif+ctrl+s
      */
     private static final long serialVersionUID = -259670499210797950L;
 
+    /**
+     * 商品id
+     */
     @JsonProperty("id")
     private String productId;
 
+    /**
+     * 商品名称
+     */
     @JsonProperty("name")
     private String productName;
 
+    /**
+     * 商品价格
+     */
     @JsonProperty("price")
     private BigDecimal productPrice;
 
+    /**
+     * 商品描述
+     */
     @JsonProperty("description")
     private String productDescription;
 
+    /**
+     * 商品图片链接
+     */
     @JsonProperty("icon")
     private String productIcon;
 

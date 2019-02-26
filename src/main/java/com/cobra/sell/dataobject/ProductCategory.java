@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 商品类目
  * @Date: Created in 2019/1/6 21:46
  */
 //@Table(name="??表明??")

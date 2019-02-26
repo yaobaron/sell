@@ -7,10 +7,10 @@ import java.util.List;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 订单详情Repository（dao）
  * @Date: Created in 2019/1/9 13:10
  */
-public interface OrderDetailRepository extends JpaRepository<OrderDetail,String> {
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, String> {
 
     List<OrderDetail> findByOrderId(String orderId);
 

@@ -6,13 +6,14 @@ import org.springframework.data.domain.Pageable;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 订单Service
  * @Date: Created in 2019/1/9 13:29
  */
 public interface OrderService {
 
     /**
      * 创建订单
+     *
      * @param orderDTO
      * @return
      */
@@ -20,6 +21,7 @@ public interface OrderService {
 
     /**
      * 查询单个订单
+     *
      * @param orderId
      * @return
      */
@@ -27,6 +29,7 @@ public interface OrderService {
 
     /**
      * 查询订单列表
+     *
      * @param buyerOpenid
      * @param pageable
      * @return
@@ -35,6 +38,7 @@ public interface OrderService {
 
     /**
      * 取消订单
+     *
      * @param orderDTO
      * @return
      */
@@ -42,6 +46,7 @@ public interface OrderService {
 
     /**
      * 完结订单
+     *
      * @param orderDTO
      * @return
      */
@@ -49,6 +54,7 @@ public interface OrderService {
 
     /**
      * 支付订单
+     *
      * @param orderDTO
      * @return
      */
@@ -56,6 +62,7 @@ public interface OrderService {
 
     /**
      * 查询订单列表
+     *
      * @param pageable
      * @return
      */

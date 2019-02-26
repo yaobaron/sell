@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 买家浏览商品Controller
  * @Date: Created in 2019/1/7 10:48
  */
 @RestController
@@ -35,37 +35,35 @@ public class BuyerProductController {
     @Autowired
     private ProductCategoryService productCategoryService;
 
+    /**
+     * 返回前端商品列表
+     *
+     * @param sellerId
+     * @return
+     */
     @GetMapping("/list")
-    @Cacheable(cacheNames = "product",key = "#sellerId",
-            condition = "#sellerId.length()>3", unless = "result.code!=0")//动态key，spel表达式，condition成立才会对结果进行缓存，unless如果不的意思,只有为0的时候，即返回正确结果才进行缓存
-    //@Cacheable(cacheNames = "product",key = "123")//查询把结果缓存
+    @Cacheable(cacheNames = "product", key = "#sellerId",
+            condition = "#sellerId.length()>3", unless = "#result.getCode()!=0")
+    //动态key，spel表达式，condition成立才会对结果进行缓存，unless如果不的意思,只有为0的时候，即返回正确结果才进行缓存
     public ResultVO list(@RequestParam("sellerId") String sellerId) {
-    //public ResultVO list() {
         //1.查询所有上架商品
         List<ProductInfo> productInfolist = productInfoService.findUpAll();
         //2.查询类目（一次性查询）
-
-        //传统方法
-        /*List<Integer> categoryTypeList = new ArrayList<>();
-        for (ProductInfo productInfo:productInfolist) {
-            categoryTypeList.add(productInfo.getCategoryType());
-        }*/
-        //java8，lambda
         List<Integer> categoryTypeList = productInfolist.stream()
                 .map(e -> e.getCategoryType())
                 .collect(Collectors.toList());
         List<ProductCategory> productCategoryList = productCategoryService.findByCategoryTypeIn(categoryTypeList);
         //3.数据拼装
         List<ProductVO> productVOList = new ArrayList<ProductVO>();
-        for (ProductCategory productCategory: productCategoryList) {
+        for (ProductCategory productCategory : productCategoryList) {
             ProductVO productVO = new ProductVO();
             productVO.setCategoryType(productCategory.getCategoryType());
             productVO.setCategoryName(productCategory.getCategoryName());
             List<ProductInfoVO> productInfoVOList = new ArrayList<ProductInfoVO>();
-            for (ProductInfo productInfo: productInfolist) {
-                if(productCategory.getCategoryType().equals(productInfo.getCategoryType())) {
+            for (ProductInfo productInfo : productInfolist) {
+                if (productCategory.getCategoryType().equals(productInfo.getCategoryType())) {
                     ProductInfoVO productInfoVO = new ProductInfoVO();
-                    BeanUtils.copyProperties(productInfo,productInfoVO);
+                    BeanUtils.copyProperties(productInfo, productInfoVO);
                     productInfoVOList.add(productInfoVO);
                 }
             }

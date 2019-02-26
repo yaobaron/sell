@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 商家信息
  * @Date: Created in 2019/1/13 20:18
  */
 @Data
@@ -46,6 +46,6 @@ public class SellerInfo {
     /**
      * 更新时间
      */
-    private  Date updateTime;
+    private Date updateTime;
 
 }

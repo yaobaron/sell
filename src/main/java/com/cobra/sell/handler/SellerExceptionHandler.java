@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 统一异常捕获，避免直接返回业务的异常给前端，规范返回
  * @Date: Created in 2019/1/17 4:42
  */
 @ControllerAdvice
@@ -25,7 +25,11 @@ public class SellerExceptionHandler {
     @Autowired
     private ProjcetUrlConfig projcetUrlConfig;
 
-    //拦截登录异常
+    /**
+     * 拦截登录异常
+     *
+     * @return
+     */
     @ExceptionHandler(value = SellerAuthorizeException.class)
     public ModelAndView handlerAuthorizeException() {
         //借用账号的的方式，直接写死
@@ -41,17 +45,18 @@ public class SellerExceptionHandler {
 
     /**
      * 捕获SellException，返回规范错误信息
+     *
      * @param e
      * @return
      */
     @ExceptionHandler(value = SellException.class)
     @ResponseBody
     public ResultVO handlerSellException(SellException e) {
-        return ResultVOUtil.error(e.getCode(),e.getMessage());
+        return ResultVOUtil.error(e.getCode(), e.getMessage());
     }
 
     /**
-     * 返回带有相应码的错误信息，加上@ResponseStatus(HttpStatus.FORBIDDEN)
+     * 返回带有相应码的错误信息示例，加上@ResponseStatus(HttpStatus.FORBIDDEN)
      */
     @ExceptionHandler(value = ResponseBankException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)

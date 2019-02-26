@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 商家信息service
  * @Date: Created in 2019/1/13 22:03
  */
 @Service
@@ -21,4 +21,5 @@ public class SellerInfoServiceImpl implements SellerInfoService {
     public SellerInfo findSellerInfoByOpenid(String openid) {
         return sellerInfoRepository.findByOpenid(openid);
     }
+
 }

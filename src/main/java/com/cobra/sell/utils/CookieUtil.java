@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: cokie操作
  * @Date: Created in 2019/1/17 2:53
  */
 public class CookieUtil {
@@ -33,31 +33,33 @@ public class CookieUtil {
 
     /**
      * 获取cookie
+     *
      * @param request
      * @param name
      * @return
      */
     public static Cookie get(HttpServletRequest request,
-                           String name) {
+                             String name) {
         Map<String, Cookie> cookieMap = readCookieMap(request);
         if (cookieMap.containsKey(name)) {
             return cookieMap.get(name);
-        }else {
+        } else {
             return null;
         }
     }
 
     /**
      * 将cookie封装成map
+     *
      * @param request
      * @return
      */
     private static Map<String, Cookie> readCookieMap(HttpServletRequest request) {
-        Map<String,Cookie> cookieMap = new HashMap<>();
+        Map<String, Cookie> cookieMap = new HashMap<>();
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
-            for (Cookie cookie:cookies) {
-                cookieMap.put(cookie.getName(),cookie);
+            for (Cookie cookie : cookies) {
+                cookieMap.put(cookie.getName(), cookie);
             }
         }
         return cookieMap;

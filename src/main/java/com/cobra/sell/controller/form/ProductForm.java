@@ -2,16 +2,16 @@ package com.cobra.sell.controller.form;
 
 import lombok.Data;
 
-import javax.persistence.Id;
 import java.math.BigDecimal;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 前端传入商品信息数据绑定
  * @Date: Created in 2019/1/12 19:24
  */
 @Data
 public class ProductForm {
+
     /**
      * 主键id
      */

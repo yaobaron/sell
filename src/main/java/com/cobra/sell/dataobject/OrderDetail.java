@@ -5,11 +5,10 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 订单详情
  * @Date: Created in 2019/1/7 12:49
  */
 @Entity
@@ -17,7 +16,7 @@ import java.util.Date;
 public class OrderDetail {
 
     @Id
-    private  String detailId;
+    private String detailId;
     /**
      * 订单号
      */
@@ -42,15 +41,5 @@ public class OrderDetail {
      * 商品小图
      */
     private String productIcon;
-
-    /**
-     * 创建时间(方便排序)
-     */
-    //private Date createTime;
-
-    /**
-     * 更新时间(方便排序)
-     */
-    //private Date updateTime;
 
 }

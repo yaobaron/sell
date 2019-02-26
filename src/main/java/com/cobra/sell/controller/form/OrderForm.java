@@ -5,11 +5,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 前端传入订单信息数据绑定
  * @Date: Created in 2019/1/9 18:53
  */
 @Data
 public class OrderForm {
+
     /**
      * 买家姓名
      */

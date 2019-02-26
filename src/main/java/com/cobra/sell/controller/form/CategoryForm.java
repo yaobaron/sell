@@ -2,11 +2,9 @@ package com.cobra.sell.controller.form;
 
 import lombok.Data;
 
-import javax.persistence.GeneratedValue;
-
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 前端传入类目信息数据绑定
  * @Date: Created in 2019/1/13 18:57
  */
 @Data

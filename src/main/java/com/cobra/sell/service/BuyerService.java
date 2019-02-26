@@ -8,19 +8,23 @@ import com.cobra.sell.dto.OrderDTO;
  * @Date: Created in 2019/1/10 23:23
  */
 public interface BuyerService {
+
     /**
      * 查询一个订单
+     *
      * @param openid
      * @param orderId
      * @return
      */
-    OrderDTO findOrderOne(String openid,String orderId);
+    OrderDTO findOrderOne(String openid, String orderId);
 
     /**
      * 取消订单
+     *
      * @param openid
      * @param orderId
      * @return
      */
-    OrderDTO cancelOrder(String openid,String orderId);
+    OrderDTO cancelOrder(String openid, String orderId);
+
 }

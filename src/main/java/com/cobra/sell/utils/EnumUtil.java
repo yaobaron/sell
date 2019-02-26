@@ -4,10 +4,11 @@ import com.cobra.sell.enums.CodeEnum;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 枚举工具
  * @Date: Created in 2019/1/11 14:27
  */
 public class EnumUtil {
+
     public static <T extends CodeEnum> T getByCode(Integer code, Class<T> enumClass) {
         for (T each : enumClass.getEnumConstants()) {
             if (code.equals(each.getCode())) {
@@ -16,4 +17,5 @@ public class EnumUtil {
         }
         return null;
     }
+
 }

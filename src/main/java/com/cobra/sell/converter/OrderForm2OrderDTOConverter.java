@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: OrderForm转为OrderDTO
  * @Date: Created in 2019/1/9 19:11
  */
 @Slf4j
@@ -29,7 +29,8 @@ public class OrderForm2OrderDTOConverter {
         List<OrderDetail> orderDetailList = new ArrayList<>();
         try {
             orderDetailList = gson.fromJson(orderForm.getItems(),
-                    new TypeToken<List<OrderDetail>>(){}.getType());
+                    new TypeToken<List<OrderDetail>>() {
+                    }.getType());
         } catch (Exception e) {
             log.error("【对象转换】错误，string={}", orderForm.getItems());
             throw new SellException(ResultEnum.PARAM_ERROR);

@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
-import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +16,7 @@ import java.util.List;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 订单DTO
  * @Date: Created in 2019/1/9 13:36
  */
 @Data
@@ -29,19 +28,19 @@ public class OrderDTO {
     /**
      * 买家名字
      */
-    private  String buyerName;
+    private String buyerName;
     /**
      * 买家电话
      */
-    private  String buyerPhone;
+    private String buyerPhone;
     /**
      * 买家地址
      */
-    private  String buyerAddress;
+    private String buyerAddress;
     /**
      * 买家微信openid
      */
-    private  String buyerOpenid;
+    private String buyerOpenid;
     /**
      * 订单总金额
      */
@@ -73,7 +72,7 @@ public class OrderDTO {
 
     //加上@JsonInclude，对象转Json会忽略掉这个方法
     @JsonInclude
-    public OrderStausEnum getOrderStatusEnum(){
+    public OrderStausEnum getOrderStatusEnum() {
         //return OrderStausEnum.getOrderStausEnum(orderStatus);
         return EnumUtil.getByCode(orderStatus, OrderStausEnum.class);
     }

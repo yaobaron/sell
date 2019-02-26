@@ -1,8 +1,6 @@
 package com.cobra.sell.vo;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import lombok.Getter;
 
 import java.io.Serializable;
 
@@ -29,4 +27,5 @@ public class ResultVO<T> implements Serializable {
      * 返回具体对象
      */
     private T data;
+
 }

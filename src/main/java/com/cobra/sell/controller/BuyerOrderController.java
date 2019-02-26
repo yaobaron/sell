@@ -25,7 +25,7 @@ import java.util.Map;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 买家订单Controller
  * @Date: Created in 2019/1/9 18:46
  */
 @RestController
@@ -41,12 +41,13 @@ public class BuyerOrderController {
 
     /**
      * 创建订单
+     *
      * @param orderForm
      * @param bindingResult
      * @return
      */
     @PostMapping("/create")
-    public ResultVO<Map<String,String>> create(@Valid OrderForm orderForm, BindingResult bindingResult){
+    public ResultVO<Map<String, String>> create(@Valid OrderForm orderForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             log.error("【创建订单】参数不正确，orderForm={}", orderForm);
             throw new SellException(ResultEnum.PARAM_ERROR.getCode(),
@@ -65,33 +66,31 @@ public class BuyerOrderController {
 
     /**
      * 订单列表
+     *
      * @param openid
      * @param page
      * @param size
      * @return
      */
     @GetMapping("/list")
-    public  ResultVO<List<OrderDTO>> list(@RequestParam("openid") String openid,
-                                          @RequestParam(value = "page",defaultValue = "0") Integer page,
-                                          @RequestParam(value = "size",defaultValue = "10")Integer size) {
+    public ResultVO<List<OrderDTO>> list(@RequestParam("openid") String openid,
+                                         @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                         @RequestParam(value = "size", defaultValue = "10") Integer size) {
         if (StringUtils.isEmpty(openid)) {
             log.error("【查询订单列表】openid为空");
             throw new SellException(ResultEnum.PARAM_ERROR);
         }
         PageRequest request = new PageRequest(page, size);
-        Page<OrderDTO> orderDTOPage = orderService.findList(openid,request);
+        Page<OrderDTO> orderDTOPage = orderService.findList(openid, request);
 
         //解决时间传到前端位数不一样，一般用转存Date -> Long低效
-        //但
-
         return ResultVOUtil.success(orderDTOPage.getContent());
-
-        //return ResultVOUtil.success();
     }
 
 
     /**
      * 订单详情
+     *
      * @param openid
      * @param orderId
      * @return
@@ -105,6 +104,7 @@ public class BuyerOrderController {
 
     /**
      * 取消订单
+     *
      * @param openid
      * @param orderId
      * @return

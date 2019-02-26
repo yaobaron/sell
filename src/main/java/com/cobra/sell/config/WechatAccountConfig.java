@@ -2,19 +2,18 @@ package com.cobra.sell.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 相关账号信息的注入
  * @Date: Created in 2019/1/14 23:02
  */
 @Data
 @Component
-@ConfigurationProperties(prefix="wechat")
+@ConfigurationProperties(prefix = "wechat")
 public class WechatAccountConfig {
 
     private String mpAppId;
@@ -54,5 +53,5 @@ public class WechatAccountConfig {
     /**
      * 模板id
      */
-    private Map<String,String> templateId;
+    private Map<String, String> templateId;
 }

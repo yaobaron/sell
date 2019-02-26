@@ -2,17 +2,12 @@ package com.cobra.sell.controller;
 
 import com.cobra.sell.controller.form.CategoryForm;
 import com.cobra.sell.dataobject.ProductCategory;
-import com.cobra.sell.enums.ResultEnum;
 import com.cobra.sell.exception.SellException;
 import com.cobra.sell.service.ProductCategoryService;
-import com.cobra.sell.utils.KeyUtil;
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +22,7 @@ import java.util.Map;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 商家类目Controller
  * @Date: Created in 2019/1/13 17:50
  */
 @Controller
@@ -40,17 +35,19 @@ public class SellerCategoryController {
 
     /**
      * 类目列表
+     *
      * @param map
      * @return
      */
     @GetMapping("/list")
-    public ModelAndView list(Map<String,Object> map){
+    public ModelAndView list(Map<String, Object> map) {
         List<ProductCategory> productCategoryList = productCategoryService.findAll();
-        map.put("productCategoryList",productCategoryList);
+        map.put("productCategoryList", productCategoryList);
         return new ModelAndView("category/list", map);
     }
 
     /**
+     * 类目详情
      *
      * @param categoryId
      * @param map
@@ -68,6 +65,7 @@ public class SellerCategoryController {
 
     /**
      * 保存类目
+     *
      * @param categoryForm
      * @param bindingResult
      * @param map
@@ -75,12 +73,12 @@ public class SellerCategoryController {
      */
     @PostMapping("/save")
     public ModelAndView index(@Valid CategoryForm categoryForm, BindingResult bindingResult,
-                              Map<String, Object> map){
-        map.put("url","/sell/seller/category/list");
+                              Map<String, Object> map) {
+        map.put("url", "/sell/seller/category/list");
         if (bindingResult.hasErrors()) {
-            log.error("【卖家保存类目】，参数绑定，传参有误，error={}"+bindingResult.getFieldError().getDefaultMessage());
+            log.error("【卖家保存类目】，参数绑定，传参有误，error={}" + bindingResult.getFieldError().getDefaultMessage());
             map.put("msg", bindingResult.getFieldError().getDefaultMessage());
-            return new ModelAndView("common/error",map);
+            return new ModelAndView("common/error", map);
         }
         ProductCategory productCategory = new ProductCategory();
         try {
@@ -98,6 +96,6 @@ public class SellerCategoryController {
             map.put("msg", "类目类型跟其他有重复");
             return new ModelAndView("common/error", map);
         }
-        return new ModelAndView("common/success",map);
+        return new ModelAndView("common/success", map);
     }
 }

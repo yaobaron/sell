@@ -2,7 +2,7 @@ package com.cobra.sell.constant;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: redis的常量
  * @Date: Created in 2019/1/17 2:28
  */
 public interface RedisConstant {

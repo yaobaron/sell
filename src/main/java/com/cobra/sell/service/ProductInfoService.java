@@ -4,7 +4,6 @@ import com.cobra.sell.dataobject.ProductInfo;
 import com.cobra.sell.dto.CartDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,6 +16,7 @@ public interface ProductInfoService {
 
     /**
      * 用id找商品
+     *
      * @param productId
      * @return
      */
@@ -24,18 +24,21 @@ public interface ProductInfoService {
 
     /**
      * 商家管理后台获取商品分页
+     *
      * @return
      */
     Page<ProductInfo> findAll(Pageable pageable);
 
     /**
      * 查询所有上架商品
+     *
      * @return
      */
     List<ProductInfo> findUpAll();
 
     /**
      * 保存和修改
+     *
      * @param productInfo
      * @return
      */
@@ -43,18 +46,21 @@ public interface ProductInfoService {
 
     /**
      * 增加库存
+     *
      * @param cartDTOList
      */
     void increaseStock(List<CartDTO> cartDTOList);
 
     /**
      * 减少库存
+     *
      * @param cartDTOList
      */
     void decreaseStock(List<CartDTO> cartDTOList);
 
     /**
      * 商品上架
+     *
      * @param productId
      * @return
      */
@@ -62,8 +68,10 @@ public interface ProductInfoService {
 
     /**
      * 商品下架
+     *
      * @param productId
      * @return
      */
     ProductInfo offSale(String productId);
+
 }

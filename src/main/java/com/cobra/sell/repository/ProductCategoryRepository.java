@@ -7,15 +7,17 @@ import java.util.List;
 
 /**
  * @Author: Baron
- * @Description: Repository接口
+ * @Description: 商品类别Repository（dao）
  * @Date: Created in 2019/1/6 22:04
  */
-public interface ProductCategoryRepository extends JpaRepository<ProductCategory,Integer> {
+public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Integer> {
 
     /**
      * 通过类目类型的list查询类目信息
+     *
      * @param categoryTypeList
      * @return
      */
     List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList);
+
 }

@@ -5,7 +5,6 @@ import com.cobra.sell.constant.CookieConstant;
 import com.cobra.sell.constant.RedisConstant;
 import com.cobra.sell.dataobject.SellerInfo;
 import com.cobra.sell.enums.ResultEnum;
-import com.cobra.sell.exception.SellException;
 import com.cobra.sell.service.SellerInfoService;
 import com.cobra.sell.utils.CookieUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 商家登录登出模块
  * @Date: Created in 2019/1/17 1:57
  */
 @Controller
@@ -42,6 +41,14 @@ public class SellerUserController {
     @Autowired
     private ProjcetUrlConfig projcetUrlConfig;
 
+    /**
+     * 登录
+     *
+     * @param openid
+     * @param response
+     * @param map
+     * @return
+     */
     @GetMapping("/login")
     public ModelAndView login(@RequestParam("openid") String openid,
                               HttpServletResponse response,
@@ -62,12 +69,20 @@ public class SellerUserController {
         //3. 设置token至浏览器
         CookieUtil.set(response, CookieConstant.TOKEN, token, expire);
         //跳转，不是渲染,跳转建议用绝对地址
-        return new ModelAndView("redirect:"+projcetUrlConfig.getSell()+"/sell/seller/order/list");
+        return new ModelAndView("redirect:" + projcetUrlConfig.getSell() + "/sell/seller/order/list");
     }
 
+    /**
+     * 登出
+     *
+     * @param request
+     * @param response
+     * @param map
+     * @return
+     */
     @GetMapping("/logout")
-    public ModelAndView logout(HttpServletRequest request,HttpServletResponse response,
-                       Map<String,Object> map) {
+    public ModelAndView logout(HttpServletRequest request, HttpServletResponse response,
+                               Map<String, Object> map) {
         //1. 从cookie里查询
         Cookie cookie = CookieUtil.get(request, CookieConstant.TOKEN);
         if (cookie != null) {
@@ -75,7 +90,7 @@ public class SellerUserController {
             //2. 清除redis
             stringRedisTemplate.opsForValue().getOperations().delete(String.format(RedisConstant.TOKEN_PREFIX, cookie.getValue()));
             //3. 清除cockie
-            CookieUtil.set(response,CookieConstant.TOKEN,null,0);
+            CookieUtil.set(response, CookieConstant.TOKEN, null, 0);
         }
         map.put("msg", ResultEnum.LOGOUT_SUCCESS);
         map.put("url", "/sell/seller/order/list");

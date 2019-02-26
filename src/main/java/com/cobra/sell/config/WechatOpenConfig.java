@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 微信开放平台相关信息注入
  * @Date: Created in 2019/1/16 22:24
  */
 @Component()
@@ -23,7 +23,7 @@ public class WechatOpenConfig {
     public WxMpService wxOpenService() {
         WxMpService wxOpenService = new WxMpServiceImpl();
         wxOpenService.setWxMpConfigStorage(wxOpenConfigStorage());
-        return  wxOpenService;
+        return wxOpenService;
     }
 
     @Bean

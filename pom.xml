@@ -86,6 +86,8 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
+        <!---->
+
         <!--使用缓存需要使用的包，之前项目的包已经包含，所以不用再次引用-->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->

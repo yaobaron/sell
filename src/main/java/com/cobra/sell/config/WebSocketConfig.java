@@ -6,7 +6,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: WebSocket的注入
  * @Date: Created in 2019/1/17 16:12
  */
 @Component

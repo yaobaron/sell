@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 普通业务异常
  * @Date: Created in 2019/1/9 14:24
  */
 @Getter
@@ -21,7 +21,7 @@ public class SellException extends RuntimeException {
     public SellException() {
     }
 
-    public SellException(Integer code,String message) {
+    public SellException(Integer code, String message) {
         super(message);
         this.code = code;
     }

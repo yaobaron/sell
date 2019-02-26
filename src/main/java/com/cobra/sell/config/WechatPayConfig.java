@@ -2,14 +2,13 @@ package com.cobra.sell.config;
 
 import com.lly835.bestpay.config.WxPayH5Config;
 import com.lly835.bestpay.service.impl.BestPayServiceImpl;
-import com.lly835.bestpay.service.impl.WxPayServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
  * @Author: Baron
- * @Description:
+ * @Description: 微信公众号支付相关信息注入
  * @Date: Created in 2019/1/15 12:10
  */
 @Component
