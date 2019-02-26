@@ -54,7 +54,6 @@ public class BuyerProductController {
         List<Integer> categoryTypeList = productInfolist.stream()
                 .map(e -> e.getCategoryType())
                 .collect(Collectors.toList());
-        System.out.println(categoryTypeList.toString());
         List<ProductCategory> productCategoryList = productCategoryService.findByCategoryTypeIn(categoryTypeList);
         //3.数据拼装
         List<ProductVO> productVOList = new ArrayList<ProductVO>();
